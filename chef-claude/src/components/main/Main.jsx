@@ -1,0 +1,64 @@
+import { useState } from "react";
+import { useRef } from "react";
+import { PrimaryBtn } from "../btns/Btns";
+import { SecondaryBtn } from "../btns/Btns";
+import styles from "./main.module.css"
+
+export default function Main() {
+    const inputRef = useRef()
+    const [inputAtual, setInputAtual] = useState("")
+    const [ingredients, setIngredients] = useState([])
+    
+    // Gera a lista de ingredientes, passando o índice como key
+    const ingredientsList = ingredients.map((ingredient, index) => (
+        <li key={index} onClick={() => del(index)}>{ingredient}</li>
+    ))
+
+
+    // Previne que onSubmit recarregue a página. Se o input conter algum valor, adiciona à lista de ingredientes, limpa e retorna o foco para o input
+    function submit(event) {
+        event.preventDefault()
+        
+        if (inputAtual.trim().length > 0) {
+            setIngredients(ingredients => [...ingredients, inputAtual.trim()])
+            setInputAtual("")
+            inputRef.current.focus()
+        }
+    }
+
+    // Filtra os itens do array, deixando apenas os que o index for diferente do index do item clicado
+    function del(index) {
+        setIngredients((ingredients) => ingredients.filter((ingredient, i) => {
+
+            if (i !== index) {
+                return true
+            }
+
+            return false
+        }))
+    }
+
+    return (
+        <main className={styles.main}>
+            <form className={styles.form} onSubmit={submit}>
+                <input ref={inputRef} value={inputAtual} onChange={(event) => setInputAtual(event.target.value)} type="text" name="ingredient" id="ingredient" placeholder="e.g. oregano" aria-label="Add ingredients" className={styles.input} />
+                <PrimaryBtn>+ Add ingredient</PrimaryBtn>
+            </form>
+
+            <div className={styles.ingredientsDiv}>
+                <h2>Ingredients on hand:</h2>
+                <ul className={styles.ul}>
+                    {ingredientsList.length > 0 ? ingredientsList : "No ingredients yet"}
+                </ul>
+            </div>
+
+            <div className={styles.generateRecipeContainer}>
+                <div className={styles.generateRecipeDiv}>
+                    <h3>Ready for a recipe</h3>
+                    <p>Generate a recipe from your list of ingredients</p>
+                </div>
+                <SecondaryBtn>Get a recipe</SecondaryBtn>
+            </div>
+        </main>
+    )
+}

@@ -1,0 +1,20 @@
+.primaryBtn {
+    height: fit-content;
+    padding: 8px 16px;
+    background-color: hsl(0, 0%, 5%);
+    font-family: var(--font);
+    color: var(--bright-text);
+    font-size: 14px;
+    border-radius: 6px;
+}
+
+.secondaryBtn {
+    height: fit-content;
+    padding: 8px 16px;
+    background-color: white;
+    border: black 2px hsl(0, 0%, 5%);
+    font-family: var(--font);
+    color: var(--dark-text);
+    font-size: 14px;
+    border-radius: 6px;
+}
