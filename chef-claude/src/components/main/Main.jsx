@@ -46,7 +46,7 @@ export default function Main() {
                 list={ingredientsList}
             />
 
-            {ingredientsList.length > 0 && <GetRecipe />}
+            {ingredientsList.length > 2 && <GetRecipe />}
         </main>
     )
 }
