@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useRef } from "react";
-import { PrimaryBtn } from "../btns/Btns";
-import { SecondaryBtn } from "../btns/Btns";
+import { PrimaryBtn } from "../btns/Btns.jsx";
+import GetRecipe from "./GetRecipe.jsx"
 import styles from "./main.module.css"
 
 export default function Main() {
@@ -16,7 +16,6 @@ export default function Main() {
 
     // Previne que onSubmit recarregue a página. Se o input conter algum valor, adiciona à lista de ingredientes, limpa e retorna o foco para o input
     function submit(formData) {
-
         if (formData.trim().length > 0) {
             setIngredients(ingredients => [...ingredients, formData.trim()])
             inputRef.current.focus()
@@ -26,7 +25,6 @@ export default function Main() {
     // Filtra os itens do array, deixando apenas os que o index for diferente do index do item clicado
     function del(index) {
         setIngredients((ingredients) => ingredients.filter((ingredient, i) => {
-
             if (i !== index) {
                 return true
             }
@@ -49,13 +47,7 @@ export default function Main() {
                 </ul>
             </div>
 
-            <div className={styles.generateRecipeContainer}>
-                <div className={styles.generateRecipeDiv}>
-                    <h3>Ready for a recipe</h3>
-                    <p>Generate a recipe from your list of ingredients</p>
-                </div>
-                <SecondaryBtn>Get a recipe</SecondaryBtn>
-            </div>
+            <GetRecipe />
         </main>
     )
 }

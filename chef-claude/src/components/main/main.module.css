@@ -8,29 +8,6 @@
     margin: 64px 64px;
 }
 
-.generateRecipeDiv {
-    color: var(--dark-text);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.generateRecipeDiv > p {
-    font-size: 14px;
-    color: hsl(0, 0%, 35%);
-}
-
-.generateRecipeContainer {
-    background-color: hsl(0, 0%, 90%);
-    width: 100%;
-    height: fit-content;
-    border-radius: 8px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 16px;
-}
-
 .input {
     padding: 0px 8px;
     flex-grow: 1;
