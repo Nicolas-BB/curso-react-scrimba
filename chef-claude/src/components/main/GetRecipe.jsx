@@ -1,5 +1,5 @@
 import { SecondaryBtn } from "../btns/Btns.jsx";
-import styles from "./getRecipe.module.css"
+import styles from "../styles/getRecipe.module.css"
 
 export default function GetRecipe() {
     return (

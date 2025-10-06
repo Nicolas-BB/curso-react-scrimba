@@ -1,5 +1,5 @@
 import logo from "../../assets/chef-claude-icon.png"
-import styles from "./header.module.css"
+import styles from "../styles/header.module.css"
 
 export default function Header() {
     return (

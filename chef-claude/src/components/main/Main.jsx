@@ -2,7 +2,8 @@ import { useState } from "react";
 import { useRef } from "react";
 import { PrimaryBtn } from "../btns/Btns.jsx";
 import GetRecipe from "./GetRecipe.jsx"
-import styles from "./main.module.css"
+import ListIngredients from "./ListIngredients.jsx"
+import styles from "../styles/main.module.css"
 
 export default function Main() {
     const inputRef = useRef()
@@ -41,12 +42,9 @@ export default function Main() {
                 <PrimaryBtn>+ Add ingredient</PrimaryBtn>
             </form>
 
-            <div className={styles.ingredientsDiv}>
-                <h2>Ingredients on hand:</h2>
-                <ul className={styles.ul}>
-                    {ingredientsList.length > 0 ? ingredientsList : "No ingredients yet"}
-                </ul>
-            </div>
+            <ListIngredients
+                list={ingredientsList}
+            />
 
             {ingredientsList.length > 0 && <GetRecipe />}
         </main>
