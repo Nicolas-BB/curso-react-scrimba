@@ -6,7 +6,6 @@ import styles from "./main.module.css"
 
 export default function Main() {
     const inputRef = useRef()
-    const [inputAtual, setInputAtual] = useState("")
     const [ingredients, setIngredients] = useState([])
 
     // Gera a lista de ingredientes, passando o índice como key
@@ -16,8 +15,10 @@ export default function Main() {
 
     // Previne que onSubmit recarregue a página. Se o input conter algum valor, adiciona à lista de ingredientes, limpa e retorna o foco para o input
     function submit(formData) {
-        if (formData.trim().length > 0) {
-            setIngredients(ingredients => [...ingredients, formData.trim()])
+        const newIngredient = formData.get("ingredient")
+
+        if (newIngredient.trim().length > 0) {
+            setIngredients(ingredients => [...ingredients, newIngredient.trim()])
             inputRef.current.focus()
         }
     }
@@ -47,7 +48,7 @@ export default function Main() {
                 </ul>
             </div>
 
-            <GetRecipe />
+            {ingredientsList.length > 0 && <GetRecipe />}
         </main>
     )
 }
