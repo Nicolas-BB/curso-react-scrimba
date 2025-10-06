@@ -3,6 +3,7 @@ import 'dotenv/config'
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const ai = new GoogleGenAI({ apiKey: GEMINI_API_KEY });
+const modelPrompt = `You are an assistant that receives a list of ingredients that a user has and suggests a recipe they could make with some or all of those ingredients. You don't need to use every ingredient they mention in your recipe. The recipe can include additional ingredients they didn't mention, but try not to include too many extra ingredients. Format your response in markdown to make it easier to render to a web page`
 
 async function callRecipe(ingredients) {
     const response = await ai.models.generateContent({
@@ -10,11 +11,11 @@ async function callRecipe(ingredients) {
         contents: [
             {
                 role: 'model',
-                parts: [{ text: 'Você é um assistente de cozinha, vai receber uma quantidade X de igredientes, e vai ter que retornar uma receita com esses igredientes, você obrigatoriamente, não pode adicionar mais nenhum igrediente a receita, use apenas os que foram informados' }]
+                parts: [{ text: modelPrompt }]
             },
             {
                 role: 'user',
-                parts: [{ text: 'Tenho alface, feijão, e cenoura' }]
+                parts: [{ text: 'Leite condensado, margarina, ovos, leite, farinha, trigo, massa de bolo, cenoura' }]
             }
         ]
     });

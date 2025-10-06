@@ -1,6 +1,6 @@
 import Header from "../header/Header.jsx"
 import Main from "../main/Main.jsx"
-import styles from "./app.module.css"
+import styles from "../styles/app.module.css"
 
 export default function App() {
     return (
