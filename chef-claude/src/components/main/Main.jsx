@@ -4,17 +4,28 @@ import { PrimaryBtn } from "../btns/Btns.jsx";
 import GetRecipe from "./GetRecipe.jsx"
 import ListIngredients from "./ListIngredients.jsx"
 import { callRecipe } from "../../api/gemini.js";
+import ReactMarkdown from "react-markdown"
 import styles from "../styles/main.module.css"
 
 export default function Main() {
     const inputRef = useRef()
     const [ingredients, setIngredients] = useState([])
     const [recipe, setRecipe] = useState("")
+    const [loading, setLoading] = useState(false)
 
     // Função que atualiza o estado
     async function generateRecipe() {
-        const result = await callRecipe(ingredients)
-        setRecipe(result)
+        setLoading(true)
+
+        try {
+            setRecipe(await callRecipe(ingredients))
+        }
+        catch {
+            setRecipe(<h2>Erro</h2>)
+        }
+        finally {
+            setLoading(false)
+        }
     }
 
     // Gera a lista de ingredientes, passando o índice como key
@@ -59,7 +70,9 @@ export default function Main() {
                 generateRecipe={generateRecipe}
             />}
 
-            <p>{recipe}</p>
+            <section className={styles.recipe}>
+                {loading ? (<div className={styles.loader}></div>) : (<ReactMarkdown>{recipe}</ReactMarkdown>)}
+            </section>
         </main>
     )
 }

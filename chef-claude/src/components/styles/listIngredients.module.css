@@ -18,5 +18,5 @@
     color: hsl(0, 0%, 30%);
     font-size: 20px;
     height: 363.7px;
-    list-style: none;
+    overflow-y: auto;
 }

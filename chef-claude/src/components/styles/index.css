@@ -19,3 +19,7 @@ body {
     height: 100vh;
     font-family: var(--font);
 }
+
+li {
+    margin-left: 4%;
+}
