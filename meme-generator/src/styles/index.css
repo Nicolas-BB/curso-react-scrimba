@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+:root {
+    --pmryColor: rgb(204, 0, 255);
+    --font: Inter, sans-serif;
+}
+
 body {
     background-color: rgb(152, 255, 169);
     display: flex;
@@ -12,5 +17,4 @@ body {
     width: 100vw;
     height: 100vh;
     font-family: var(--font);
-
-}
+} 
