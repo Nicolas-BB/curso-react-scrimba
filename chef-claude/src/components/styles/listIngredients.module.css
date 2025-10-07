@@ -17,6 +17,6 @@
     margin-left: 16px;
     color: hsl(0, 0%, 30%);
     font-size: 20px;
-    overflow-y: auto;
     height: 363.7px;
+    list-style: none;
 }

@@ -3,11 +3,19 @@ import { useRef } from "react";
 import { PrimaryBtn } from "../btns/Btns.jsx";
 import GetRecipe from "./GetRecipe.jsx"
 import ListIngredients from "./ListIngredients.jsx"
+import { callRecipe } from "../../api/gemini.js";
 import styles from "../styles/main.module.css"
 
 export default function Main() {
     const inputRef = useRef()
     const [ingredients, setIngredients] = useState([])
+    const [recipe, setRecipe] = useState("")
+
+    // Função que atualiza o estado
+    async function generateRecipe() {
+        const result = await callRecipe(ingredients)
+        setRecipe(result)
+    }
 
     // Gera a lista de ingredientes, passando o índice como key
     const ingredientsList = ingredients.map((ingredient, index) => (
@@ -46,7 +54,12 @@ export default function Main() {
                 list={ingredientsList}
             />
 
-            {ingredientsList.length > 2 && <GetRecipe />}
+            {ingredientsList.length > 2 && <GetRecipe
+                ingredients={ingredients.join(", ")}
+                generateRecipe={generateRecipe}
+            />}
+
+            <p>{recipe}</p>
         </main>
     )
 }

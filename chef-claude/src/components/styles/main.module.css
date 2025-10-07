@@ -6,6 +6,7 @@
     height: 100%;
     gap: 32px;
     margin: 64px 64px;
+    overflow-y: auto;
 }
 
 .input {
