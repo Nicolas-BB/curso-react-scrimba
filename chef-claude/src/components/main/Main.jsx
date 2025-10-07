@@ -90,26 +90,4 @@ export default function Main() {
             </main>
         )
     }
-
-    //     return (
-    //         <main className={styles.main}>
-    //             <form className={styles.form} action={submit}>
-    //                 <input ref={inputRef} type="text" name="ingredient" id="ingredient" placeholder="e.g. oregano" aria-label="Add ingredients" className={styles.input} />
-    //                 <PrimaryBtn>+ Add ingredient</PrimaryBtn>
-    //             </form>
-
-    //             <ListIngredients
-    //                 list={ingredientsList}
-    //             />
-
-    //             {ingredientsList.length > 2 && <GetRecipe
-    //                 ingredients={ingredients.join(", ")}
-    //                 generateRecipe={generateRecipe}
-    //             />}
-
-    //             <section className={styles.recipe}>
-    //                 {loading ? (<div className={styles.loader}></div>) : (<ReactMarkdown>{recipe}</ReactMarkdown>)}
-    //             </section>
-    //         </main>
-    //     )
 }
