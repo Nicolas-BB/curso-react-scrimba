@@ -68,6 +68,7 @@
     flex-direction: column;
     gap: 32px;
     padding: 32px 64px;
+    overflow-y: auto;
 }
 
 .recipeMain button {
