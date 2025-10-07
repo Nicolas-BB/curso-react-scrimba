@@ -1,6 +1,5 @@
 .div {
     width: 720px;
-    height: 853px;
     display: flex;
     flex-direction: column;
     overflow: hidden;
