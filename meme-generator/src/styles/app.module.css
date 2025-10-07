@@ -1,0 +1,10 @@
+.div {
+    width: 720px;
+    height: 853px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 16px;
+    border: 6px hsl(0, 0%, 90%) solid;
+    background-color: hsl(0, 0%, 98%);
+}
