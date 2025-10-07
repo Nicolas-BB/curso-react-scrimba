@@ -1,0 +1,22 @@
+.getRecipeDiv {
+    color: var(--dark-text);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.getRecipeDiv>p {
+    font-size: 14px;
+    color: hsl(0, 0%, 35%);
+}
+
+.getRecipeContainer {
+    background-color: hsl(0, 0%, 90%);
+    width: 100%;
+    height: fit-content;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 16px;
+}

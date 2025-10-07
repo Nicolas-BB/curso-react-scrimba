@@ -1,0 +1,25 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bright-text: hsl(0, 0%, 90%);
+    --dark-text: hsl(0, 0%, 10%);
+    --font: Inter, sans-serif;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: hsl(0, 0%, 15%);
+    width: 100vw;
+    height: 100vh;
+    font-family: var(--font);
+}
+
+li {
+    margin-left: 4%;
+}
