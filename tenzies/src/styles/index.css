@@ -6,7 +6,6 @@
 
 :root {
     --font: 'Inter', sans-serif;
-    font-family: var(--font);
 }
 
 body {
@@ -17,4 +16,5 @@ body {
     align-items: center;
     justify-content: center;
     background-color: rgb(68, 0, 255);
+    font-family: var(--font);
 }
