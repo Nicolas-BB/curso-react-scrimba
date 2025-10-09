@@ -3,23 +3,43 @@ import styles from '../../styles/main.module.css'
 import Die from '../die/Die.jsx'
 
 export default function Main() {
-    const [selected, setSelected] = useState(0)
-    const [randomNums, setRandomNums] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+    const [dice, setDice] = useState(generateRandomNums)
+    const [isHeld, setIsHeld] = useState(0)
 
+    // Gera os números aleatórios iniciais
     function generateRandomNums() {
-        setRandomNums(randomNums => [])
+        let numArray = []
 
         for (let i = 0; i < 10; i++) {
-            let num = Math.floor((Math.random() * 6) + 1)
+            let num = {
+                id: i,
+                value: Math.floor((Math.random() * 6) + 1),
+                isHeld: false
+            }
 
-            setRandomNums(randomNums => [...randomNums, num])
+            numArray.push(num)
         }
+
+        return numArray
     }
 
-    const dice = randomNums.map(num => {
+    // Alterna os valores de "isHeld" do Die com o "id" correspondente
+    function hold(id) {
+        setDice(dice => dice.map(die => die.id === id ? { ...die, isHeld: !die.isHeld } : die))
+    }
+
+    // Gera novos dados, exceto o que estiver com o prop "isHeld=true"
+    function rollDice() {
+        setDice(dice => dice.map(die => die.isHeld ? die : { ...die, value: Math.ceil(Math.random() * 6) }))
+    }
+
+    const diceElements = dice.map(dice => {
         return (
             <Die
-                value={num}
+                key={dice.id}
+                value={dice.value}
+                isHeld={dice.isHeld}
+                hold={() => hold(dice.id, dice.isHeld)}
             />
         )
     })
@@ -28,9 +48,9 @@ export default function Main() {
         <main className={styles.main}>
             <h1>Tenzie</h1>
             <div className={styles.diceDiv}>
-                {dice}
+                {diceElements}
             </div>
-            <button onClick={generateRandomNums} className={styles.button}>Rolar</button>
+            <button onClick={rollDice} className={styles.button}>Rolar</button>
         </main>
     )
 }
