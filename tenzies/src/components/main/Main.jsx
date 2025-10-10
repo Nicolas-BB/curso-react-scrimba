@@ -43,6 +43,10 @@ export default function Main() {
             />
         )
     })
+    
+    if (dice.every(die => die.isHeld === true) && dice.every(die => die.value === dice[0].value)) {
+        console.log('Win!')
+    }
 
     return (
         <main className={styles.main}>
