@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react'
-import styles from '../../styles/main.module.css'
 import Die from '../die/Die.jsx'
+import { useState } from 'react'
+import styles from '../../styles/main.module.css'
+import Confetti from 'react-confetti'
 
 export default function Main() {
     const [dice, setDice] = useState(generateRandomNums)
@@ -43,18 +44,22 @@ export default function Main() {
             />
         )
     })
-    
-    if (dice.every(die => die.isHeld === true) && dice.every(die => die.value === dice[0].value)) {
-        console.log('Win!')
-    }
+
+    const gameWon = dice.every(die => die.isHeld === true) && dice.every(die => die.value === dice[0].value)
+    const confetti = gameWon && <Confetti style={{ width: `${100}vw`, height: `${100}vh` }} />
+    const roll = gameWon ? () => setDice(generateRandomNums) : rollDice
 
     return (
         <main className={styles.main}>
+            {confetti}
+            <div aria-live="polite" className={styles.srOnly}>
+                {gameWon && <p>Congratulations! You won! Press "New Game" to start again.</p>}
+            </div>
             <h1>Tenzie</h1>
             <div className={styles.diceDiv}>
                 {diceElements}
             </div>
-            <button onClick={rollDice} className={styles.button}>Rolar</button>
+            <button onClick={() => roll()} className={styles.button}>{gameWon ? 'Novo jogo' : 'Rolar'}</button>
         </main>
     )
 }
