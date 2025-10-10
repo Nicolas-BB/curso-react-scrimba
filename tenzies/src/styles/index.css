@@ -18,3 +18,10 @@ body {
     background-color: rgb(68, 0, 255);
     font-family: var(--font);
 }
+
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid #3b82f6;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
