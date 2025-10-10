@@ -1,11 +1,14 @@
 import Die from '../die/Die.jsx'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import styles from '../../styles/main.module.css'
 import Confetti from 'react-confetti'
 
 export default function Main() {
     const [dice, setDice] = useState(generateRandomNums)
     const [isHeld, setIsHeld] = useState(0)
+    const gameWon = dice.every(die => die.isHeld === true) && dice.every(die => die.value === dice[0].value)
+    const confetti = gameWon && <Confetti style={{ width: `${100}vw`, height: `${100}vh` }} />
+    const roll = gameWon ? () => setDice(generateRandomNums) : rollDice
 
     // Gera os números aleatórios iniciais
     function generateRandomNums() {
@@ -45,9 +48,10 @@ export default function Main() {
         )
     })
 
-    const gameWon = dice.every(die => die.isHeld === true) && dice.every(die => die.value === dice[0].value)
-    const confetti = gameWon && <Confetti style={{ width: `${100}vw`, height: `${100}vh` }} />
-    const roll = gameWon ? () => setDice(generateRandomNums) : rollDice
+    useEffect(() => {
+        const roll = document.querySelector('#roll')
+        roll.focus()
+    }, [gameWon])
 
     return (
         <main className={styles.main}>
@@ -59,7 +63,7 @@ export default function Main() {
             <div className={styles.diceDiv}>
                 {diceElements}
             </div>
-            <button onClick={() => roll()} className={styles.button}>{gameWon ? 'Novo jogo' : 'Rolar'}</button>
+            <button id='roll' onClick={() => roll()} className={styles.button}>{gameWon ? 'Novo jogo' : 'Rolar'}</button>
         </main>
     )
 }
