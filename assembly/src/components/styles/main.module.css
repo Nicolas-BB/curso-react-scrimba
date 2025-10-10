@@ -1,0 +1,15 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.lettersContainer {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
