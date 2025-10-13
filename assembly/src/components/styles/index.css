@@ -11,6 +11,6 @@
 body {
     width: 100vw;
     height: auto;
-    background-color: hsl(0, 0%, 15%);
+    background-color: hsl(0, 0%, 10%);
     font-family: var(--font);
 }

@@ -8,4 +8,9 @@
     padding: 8px;
     border-radius: 8px;
     background-color: hsl(0, 0%, 70%);
+    cursor: pointer;
+}
+
+.selected {
+    background-color: hsl(0, 100%, 72%);
 }
