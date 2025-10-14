@@ -7,7 +7,7 @@
 }
 
 .lettersContainer {
-    max-width: 650px;
+    max-width: 720px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -51,11 +51,17 @@
 .wordContainer {
     display: flex;
     flex-direction: row;
-    gap: 32px;
+    gap: 8px;
 }
 
 .letter {
-    width: 100px;
-    height: 100px;
-    background-color: hsl(0, 0%, 90%);
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 8px hsl(0, 0%, 75%) solid;
+    background-color: hsl(0, 0%, 25%);
+    color: white;
+    font-size: 32px;
 }

@@ -52,8 +52,11 @@ export default function Main() {
     ))
 
     // Gera botões com cada letra da palavra
-    const word = (currentWord.split('')).map((letter) => (
-        <div className={styles.letter}>
+    const word = (currentWord.toLocaleUpperCase().split('')).map((letter) => (
+        <div
+            key={letter}
+            className={styles.letter}
+        >
             {letter}
         </div>
     ))
