@@ -5,6 +5,7 @@ import styles from '../styles/main.module.css'
 
 export default function Main() {
     const [letters, setLetters] = useState(alphabetElements())
+    const [guess, setGuess] = useState([])
     const [currentWord, setCurrentWord] = useState('react')
     const [gameStatus, setGameStatus] = useState({ gameEnd: true, gameWon: false })
 
@@ -39,6 +40,7 @@ export default function Main() {
                 letter.id === id ? { ...letter, isSelected: true } : letter
             )
         )
+        setGuess(guess => guess.includes(id) ? guess : [...guess, id])
     }
 
     // Gera os botões para cada letra
@@ -51,14 +53,14 @@ export default function Main() {
         />
     ))
 
-    // Gera botões com cada letra da palavra
+    // Divide a palavra em letras
     const word = (currentWord.toLocaleUpperCase().split('')).map((letter) => (
-        <div
+        <span
             key={letter}
             className={styles.letter}
         >
             {letter}
-        </div>
+        </span>
     ))
 
     const message = gameStatus.gameWon ? 'Você venceu!' : 'Você perdeu!'
@@ -80,6 +82,7 @@ export default function Main() {
             <div className={styles.lettersContainer}>
                 {lettersElement}
             </div>
+            <button onClick={() => console.log(guess)}>A</button>
         </main>
     )
 }
